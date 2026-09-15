@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Description des quatre configurations comparées.}
+\label{tab:config-description}
+\begin{tabular}{llcc}
+\toprule
+Config & Description & Retrieval & Fine-tuning \\
+\midrule
+C1 & Mistral-7B-Instruct zero-shot & Non & Non \\
+C2 & RAG (retrieval e5-large + reranker) & Oui & Non \\
+C3 & Fine-tuning QLoRA seul & Non & Oui \\
+C4 & Fine-tuning QLoRA + RAG & Oui & Oui \\
+\bottomrule
+\end{tabular}
+\end{table}

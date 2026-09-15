@@ -1,0 +1,51 @@
+id,question,abstention_type,should_abstain,excluded_article_id
+1,Quelle est la recette traditionnelle des gaufres de Liège ?,non_juridique,True,
+2,Comment fonctionne la photosynthèse chez les plantes ?,non_juridique,True,
+3,Quel est le plus haut sommet des Alpes belges ?,non_juridique,True,
+4,Quelle est la capitale de l'Australie ?,non_juridique,True,
+5,Comment fait-on cuire un œuf à la coque parfait ?,non_juridique,True,
+6,Quels sont les symptômes de la grippe saisonnière ?,non_juridique,True,
+7,Quelle est la différence entre un cumulonimbus et un cirrus ?,non_juridique,True,
+8,Comment installer une étagère murale en placo ?,non_juridique,True,
+9,Quel est le principe de fonctionnement d'un moteur à combustion ?,non_juridique,True,
+10,Quelle est la meilleure période pour visiter les Ardennes ?,non_juridique,True,
+11,Comment se forme un arc-en-ciel ?,non_juridique,True,
+12,Quels sont les ingrédients d'une carbonade flamande ?,non_juridique,True,
+13,Quelle est la vitesse de la lumière dans le vide ?,non_juridique,True,
+14,Comment entraîner un chiot à la propreté ?,non_juridique,True,
+15,Quel est le cycle de vie d'un papillon ?,non_juridique,True,
+16,Quelle est la théorie de la relativité générale d'Einstein ?,non_juridique,True,
+17,Comment fonctionne un panneau solaire photovoltaïque ?,non_juridique,True,
+18,Quels sont les bienfaits du yoga sur le stress ?,non_juridique,True,
+19,Quelle est l'histoire de l'Atomium à Bruxelles ?,non_juridique,True,
+20,Comment programmer une boucle for en Python ?,non_juridique,True,
+21,Quelle est la procédure de divorce par consentement mutuel en France ?,droit_etranger,True,
+22,Quel est le régime du RSA (revenu de solidarité active) en France ?,droit_etranger,True,
+23,Quelles sont les règles du Chapter 7 bankruptcy aux États-Unis ?,droit_etranger,True,
+24,Quel est le délai de préavis légal de licenciement en Allemagne ?,droit_etranger,True,
+25,Comment fonctionne le système de visa H1-B aux États-Unis ?,droit_etranger,True,
+26,Quelles sont les règles du bail commercial au Québec ?,droit_etranger,True,
+27,Quel est le montant du salaire minimum légal au Luxembourg ?,droit_etranger,True,
+28,Comment fonctionne le Universal Credit au Royaume-Uni ?,droit_etranger,True,
+29,Quelles sont les conditions d'obtention du permis de séjour en Suisse ?,droit_etranger,True,
+30,Quel est le régime fiscal des auto-entrepreneurs en France ?,droit_etranger,True,
+31,Comment fonctionne la garde à vue en droit pénal français ?,droit_etranger,True,
+32,Quelles sont les règles de succession en droit marocain ?,droit_etranger,True,
+33,Quel est le statut du PACS en droit français ?,droit_etranger,True,
+34,Comment fonctionne le small claims court en Angleterre ?,droit_etranger,True,
+35,Quelles sont les règles de copropriété au Canada ?,droit_etranger,True,
+36,Puis-je déshériter mes enfants ?,article_retire_index,True,1818
+37,Quels sont les critères communaux d'insalubrité ?,article_retire_index,True,12024
+38,Mon propriétaire peut-il mettre fin au bail de courte durée avant l’échéance à Bruxelles ?,article_retire_index,True,857
+39,Je suis majeur. Je séjourne en Belgique depuis au moins 10 ans. Comment se déroule la procédure de demande de nationalité ?,article_retire_index,True,18761
+40,Une personne mise en observation est-elle incapable de gérer ses biens ?,article_retire_index,True,5414
+41,Puis-je demander une diminution du loyer en cours de bail à Bruxelles ?,article_retire_index,True,860
+42,J'ai signé une déclaration de cohabitation légale. A qui appartiennent les biens achetés pendant la cohabitation légale ?,article_retire_index,True,2335
+43,Puis-je refuser cette transaction pénale ?,article_retire_index,True,13520
+44,"Si on se sépare, le tribunal de la famille peut-il prendre des décisions concernant notre bail de logement social en Wallonie ?",article_retire_index,True,5456
+45,"Je suis parent. Le père biologique, mais non légal, doit-il payer une contribution alimentaire pour mon enfant ?",article_retire_index,True,1150
+46,Après combien de temps le paiement de mon loyer est-il prescrit ?,article_retire_index,True,2844
+47,"Je me sépare. En tant que cohabitants légaux, le juge de la famille peut-il imposer à l’un de nous de quitter la maison ?",article_retire_index,True,2336
+48,Je reçois les confidences en tant que professionnel. Peut-on m'accuser de non-assistance à personne en danger si je me tais ?,article_retire_index,True,6548
+49,Mon propriétaire peut-il mettre fin au bail de 9 ans pour occuper personnellement le logement à Bruxelles ?,article_retire_index,True,856
+50,Quel parent est responsable des actes de notre enfant mineur si nous sommes séparés ?,article_retire_index,True,2222

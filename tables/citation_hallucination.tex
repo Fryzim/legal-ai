@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Fiabilité des réponses : exactitude de citation et hallucination (222 questions test).}
+\label{tab:citation-hallucination}
+\begin{tabular}{lcccc}
+\toprule
+Config & Précision citation & Rappel citation & Exact match & Taux hallucination \\
+\midrule
+C1_zero_shot & 0.016 & 0.011 & 0.005 & 0.144 \\
+C2_rag & 0.176 & 0.132 & 0.036 & 0.234 \\
+C3_finetune & 0.023 & 0.012 & 0.000 & 0.050 \\
+C4_finetune_rag & 0.069 & 0.053 & 0.005 & 0.167 \\
+\bottomrule
+\end{tabular}
+\end{table}

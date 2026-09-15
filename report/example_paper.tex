@@ -1,0 +1,386 @@
+%%%%%%%% ICML 2025 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
+
+\documentclass{article}
+
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
+
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2025} with \usepackage[nohyperref]{icml2025} above.
+\usepackage{hyperref}
+
+
+% Attempt to make hyperref and algorithmic work together better:
+\newcommand{\theHalgorithm}{\arabic{algorithm}}
+
+% Use the following line for the initial blind version submitted for review:
+% \usepackage{icml2025}
+
+% If accepted, instead use the following line for the camera-ready submission:
+\usepackage[accepted]{icml2025}
+
+% For theorems and such
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsthm}
+
+% if you use cleveref..
+\usepackage[capitalize,noabbrev]{cleveref}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THEOREMS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Todonotes is useful during development; simply uncomment the next line
+%    and comment out the line below the next line to turn off comments
+%\usepackage[disable,textsize=tiny]{todonotes}
+\usepackage[textsize=tiny]{todonotes}
+
+
+% The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Introduction to Machine Learning - kNN Project Report}
+
+\begin{document}
+
+\twocolumn[
+\icmltitle{Introduction to Machine Learning \\ kNN Project Report}
+
+% It is OKAY to include author information, even for blind
+% submissions: the style file will automatically remove it for you
+% unless you've provided the [accepted] option to the icml2025
+% package.
+
+% List of affiliations: The first argument should be a (short)
+% identifier you will use later to specify author affiliations
+% Academic affiliations should list Department, University, City, Region, Country
+% Industry affiliations should list Company, City, Region, Country
+
+% You can specify symbols, otherwise they are numbered in order.
+% Ideally, you should not use this facility. Affiliations will be numbered
+% in order of appearance and this is the preferred way.
+\icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+\icmlauthor{Chaabane Ouammou}{equal,yyy}
+\icmlauthor{Sahra Zeghoudi}{equal,yyy}
+%\icmlauthor{}{sch}
+%\icmlauthor{}{sch}
+%\icmlauthor{}{sch}
+\end{icmlauthorlist}
+
+\icmlaffiliation{yyy}{Jean Monnet University, Saint-Etienne, France}
+
+\icmlcorrespondingauthor{Chaabane Ouammou}{chaabane.ouammou@etu.univ-st-etienne.fr}
+\icmlcorrespondingauthor{Sahra Zeghoudi}{sahra.zeghoudi@etu.univ-st-etienne.fr}
+
+% You may provide any keywords that you
+% find helpful for describing your paper; these are used to populate
+% the "keywords" metadata in the PDF but will not be shown in the document
+\icmlkeywords{Machine Learning, ICML}
+
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+\printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+
+\begin{abstract}
+This project aims to study the k-Nearest Neighbors (kNN) algorithm applied to waveform classification and to evaluate how data reduction and distance optimization techniques affect its performance. We first implemented a basic version of kNN to establish a baseline, which achieved an accuracy close to 86 \%. Then, we applied two data reduction methods to simplify the training set. These methods significantly decreased execution time (up to 14 times faster) while maintaining similar accuracy levels. Finally, we compared our implementation with scikit-learn's Support Vector Classifier (SVC) \cite{CortesVapnik1995} to evaluate performance differences. Our results show that data reduction can effectively speed up computation without substantially sacrificing accuracy, while distance optimization methods showed limited impact.
+\end{abstract}
+
+\section{Introduction}
+\label{intro}
+
+The k-Nearest Neighbors (kNN) algorithm is a simple yet powerful method for classification and regression tasks. It classifies a new instance by comparing it to the closest samples in the training data according to a chosen distance metric. Despite its conceptual simplicity, kNN can become computationally expensive when applied to large datasets, as every prediction requires distance computations with all training samples.
+
+In this project, we will apply kNN to the waveform dataset to explore how its performance can be improved through data reduction and distance computation optimizations. Our objectives will be threefold: (1) implement a basic kNN classifier, (2) apply and evaluate data reduction strategies to reduce complexity and execution time, and (3) explore distance optimization techniques such as the triangle inequality and kd-tree structures. Finally, we will compare our implementation to scikit-learn's Support Vector Classifier (SVC).
+
+\section{Experimental set-up}
+
+\subsection{Dataset}
+The dataset, \verb|waveform.data|, consists of 5,000 samples, each described by 21 noisy features and divided into three waveform classes that overlap. We separate the dataset into two parts: 4000 data for training and 1000 data for testing. We also implement a PCA \cite{Hotelling1933} algorithm to display the training data after reduction.
+
+We shuffle the dataset, then separate it: the first 4000 for training and the other 1000 for testing.
+
+\subsection{kNN}
+kNN (k-Nearest Neighbors) \cite{CoverHart1967} is used to classify or predict a value based on the similarity between data. When we want to determine the category or value of a new element, the algorithm searches the training set for the k elements closest to this new element. In the case of classification (our case), we do a majority vote on these k nearest neighbors and the prediction will be the most numerous label. Proximity is defined by a distance measure, which in our case is the Euclidean norm (we only consider the points in a hypersphere V with our element as center).
+
+\subsection{Data reduction}
+We applied two data reduction strategies: removal of the bias zone and elimination of irrelevant samples.
+
+The first one consists in separating the dataset into two subsets S1 and S2. We classify S1 with respect to S2 using a 1-NN classifier, and we remove the misclassified examples from S1 and do the same thing with S2, using the new S1. We continue until stabilization.
+
+The 2nd algorithm consist into taking a random point in the set and putting into a storage. We then classify the dataset with the storage. Every wrong prediction is added to the storage and we repeat the last process until stabilization. We end up with the cleaned set.
+
+These reductions are applied only to the training data. We test data reductions on 50 seeds (from 100 to 149 inclusive) and execution time because data reductions reduce complexity. For this we will use a 1-NN.
+
+\subsection{Optimizations of distance calculation}
+ We implement the triangle inequality \cite{MorenoSeco2002} and kd-tree \cite{FriedmanBentleyFinkel1977} algorithms to reduce the algorithmic complexity.
+
+ The triangle inequality for 3 points A, B and C: $d(A,C) \leq d(A,B)+d(B,C)$. This property allows to reduce the number of distance calculations because it allows to eliminate points that are too far away without calculating their distance.
+
+ The kd-tree (k-dimensional tree) allows you to quickly find the points closest to a given point. The principle is to divide the space in two subspace at each step along a dimension. Each node in the tree represents a point and separates the other points into two groups: those with a smaller value and those with a larger value on that dimension. When searching for a neighbor, you traverse the tree to visit only the useful areas instead of comparing the point to all the others.
+
+\subsection{Compare the kNN classifier with another machine learning algorithm}
+
+We use the Support Vector Classifier (SVC) \cite{CortesVapnik1995} from Scikit-Learn to compare it to our model (k-NN triangle Inequality).
+
+\section{Analysis of the results}
+
+\subsection{Our kNN}
+
+We first test whether our knn works well. With Figure \ref{knn_red0}, we can see that for approximately $k \geq 25$, accuracy stabilizes and therefore that our model converges.
+
+We repeat the operation 50 times (with seeds ranging from 100 to 149) and we obtain Table \ref{res-knn}. We notice that we have almost reached the maximum accuracy of 86 \% (within 0.02 \% for the accuracy at test time). But we are not overfitting because the accuracies at training time and test time are very close with a difference of 0.12 \%. 
+So, our kNN works well.
+
+\begin{figure}[ht] 
+\vskip -0.1in 
+\begin{center} 
+\centerline{\includegraphics[width=\columnwidth]{knn_red0.png}} 
+\caption{Example of kNN execution (accuracy at training time = 85.95\%, accuracy at test time = 84.50\%, seed = 42, k ranging from 1 to 100)} 
+\label{knn_red0} 
+\end{center} 
+\vskip -0.5in 
+\end{figure}
+
+\begin{table}[ht]
+\caption{Results for our kNN}
+\label{res-knn}
+\vskip 0.15in
+\begin{center}
+\begin{small}
+\begin{sc}
+\begin{tabular}{lcccr}
+
+\toprule
+Best k & Best accuracy (training) \\
+\midrule
+70.5 & 85.82 \% \\
+\bottomrule
+
+\toprule
+Final accuracy (test) & Average time \\
+\midrule
+85.94 \% & 152.7 s \\
+\bottomrule
+
+\end{tabular}
+\end{sc}
+\end{small}
+\end{center}
+\vskip -0.6in
+\end{table}
+
+
+\subsection{Data reduction}
+
+\subsubsection{Reduction}
+In this part, we shuffle the dataset with seed = 42.
+Before the reductions, there are 4000 examples (Figure \ref{red0}). After the first reduction, there are only 3201. And finally, after the second reduction: 707 examples (Figure \ref{red2}). We perform a PCA \cite{Hotelling1933} for display.
+
+\begin{figure}[ht]
+\vskip -0.18in
+\begin{center}
+\begin{minipage}{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{red0.png}
+    \vskip -0.15in
+    \caption*{(a) Display of the 4000 training data}
+    \label{red0}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{red2.png}
+    \vskip -0.15in
+    \caption*{(b) Display of the 707 training data remaining after the two reductions}
+    \label{red2}
+\end{minipage}
+\vskip -0.12in
+\caption{Comparison of training data (seed = 42) before and after reduction (PCA).}
+\label{fig:reduction_comparison}
+\end{center}
+\vskip -0.3in
+\end{figure}
+
+\subsubsection{Accuracy (1-NN)}
+
+We can see in Table \ref{reduction-results}, that in test time the accuracy is similar with or without reduction within 2 \%. After the first reduction the execution is 1.6 times faster and after the second 14.6 times faster, there is a huge gain in execution time. So the reductions reduce the complexity and are therefore faster without losing too much accuracy.
+
+\vskip -0.3in
+\begin{table}[ht]
+\caption{Average 1-NN results for before, after a first reduction and after the second}
+\label{reduction-results}
+\begin{center}
+\begin{small}
+\begin{sc}
+\vskip -0.2in
+\begin{tabular}{lcccr}
+\toprule
+ & Without red. & 1st red. & 2nd red. \\
+\midrule
+Best acc. (train) & 78 \% & 95 \% & 42 \% \\
+Final acc. (test) & 78 \% & 80 \% & 77 \% \\
+Time              & 3.36 s & 2.13 s & 0.23 s \\ 
+\bottomrule
+
+\end{tabular}
+\end{sc}
+\end{small}
+\end{center}
+\vskip -0.3in
+\end{table}
+
+\subsection{Optimizations of distance calculation}
+
+We tested all three methods with k ranging from 100 to 109. We have similar test time accuracies. But the time differences are due to the use of \verb|cdist| from the \verb|scipy| library, which is very fast.
+
+%\newpage
+
+\begin{table}[ht]
+\vskip -0.3in
+\caption{(1) Best k (average), (2) Best accuracy (train), (3) Final accuracy (test), (4) Time}
+\label{opti-results}
+\vskip -0.15in
+\begin{center}
+\begin{small}
+\begin{sc}
+\begin{tabular}{lcccr}
+
+\toprule
+ & kNN (1st version) & Triangle ineq. & kd-tree \\
+\midrule
+(1)  & 39.75 & 40.75 & 38.28 \\
+(2) & 81.07 \% & 79.66 \% & 84.82 \% \\
+(3) & 85.86 \% & 85.48 \% & 85.60 \% \\
+(4) & 3.27 s & 11.96 s & 360.44 s \\ 
+\bottomrule
+
+\end{tabular}
+\end{sc}
+\end{small}
+\end{center}
+\vskip -0.3in
+\end{table}
+
+\subsection{Compare the kNN classifier with another machine
+learning algorithm}
+
+We compare our kNN (triangular inequality) with Scikit-Learn's SVC. In Figures \ref{fig:model_comparison} and \ref{fig2:model_comparison}, we see that these SVC models are much faster than our kNN for similar accuracies: 1 \% difference between the best and the worst. This difference is mainly explained by our implementation, such as the use of python loops.
+
+Moreover, for the kNN the training is instantaneous and a few seconds for the SVC (for about 4000 data), but what really makes the difference is at the time of the test: for the kNN the complexity is $O(4000 \times
+21) \approx 84000$ against $O(n\_sv \times 21)$ such that $n\_sv = 1513 << 4000$ (in our example).
+
+\begin{figure}[H]
+\vskip -0.3in
+\begin{center}
+\caption{Histograms of average execution time (and standard deviation) and average accuracies}
+\begin{minipage}{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{compare_1.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\columnwidth}
+    \centering
+    \includegraphics[width=\linewidth]{compare_3.png}
+\end{minipage}
+\label{fig:model_comparison}
+\end{center}
+\vskip -0.3in
+\end{figure}
+
+\begin{figure}[ht]
+    \vskip -0.20in
+    %\centering
+    %\includegraphics[width=0.5\linewidth]{}
+    \caption{Our kNN vs SVCs}
+    \label{fig:TvsA}
+    \includegraphics[scale=0.28]{output5.png}
+    \label{fig2:model_comparison}
+\end{figure}
+
+
+
+%\vskip -0.3in
+
+\subsubsection{Scores}
+We can see that on the Radar Chart, all scores are more or less similar for the kNN and the SVCs, except for the time, where a significant difference is observed. 
+The best overall is the Polynomial SVC.
+
+\begin{figure}[H]
+\vskip -0.2in
+\caption{Scores comparison kNN vs SVCs}
+\begin{center}
+\begin{minipage}{0.48\columnwidth}
+    \centering
+    \includegraphics[scale=0.20]{output6.png}
+\end{minipage}
+\end{center}
+\vskip -0.5in
+\end{figure}
+
+
+\section{Conclusion}
+
+
+In this project, we compared the \textit{k}-Nearest Neighbors algorithm and the Support Vector Classifier on the waveform dataset. Our experiments showed that although kNN provides good classification performance, it remains limited by its high computational cost at test time and its sensitivity to data dimensionality. Data reduction and distance optimization techniques helped improve efficiency (up to 14× faster) without significant loss of accuracy. Nevertheless, SVCs proved to be more efficient overall, mainly due to their smaller number of support vectors and better scalability in high-dimensional spaces.
+
+\textbf{Future work:} Several improvements could further enhance our study. Additional dimensionality reduction techniques (e.g., LDA, t-SNE, ...) could be explored to mitigate the curse of dimensionality. Finally, testing other algorithms such as Random Forests, AdaBoost, or Neural Networks would allow a broader comparison and deeper understanding of the trade-offs between accuracy, complexity, and interpretability.
+
+
+% References 
+
+\bibliography{example_paper}
+\bibliographystyle{icml2025}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}
+
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2021 and by Csaba Szepesvari, Gang Niu and Sivan Sabato in 2022.
+% Modified again in 2023 and 2024 by Sivan Sabato and Jonathan Scarlett.
+% Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.

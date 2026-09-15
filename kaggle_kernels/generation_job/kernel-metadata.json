@@ -1,0 +1,18 @@
+{
+  "id": "jkrkjenrjr/ter-bsard-generation-eval",
+  "title": "TER BSARD Generation Eval C1-C4",
+  "code_file": "generation_job.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [
+    "jkrkjenrjr/ter-bsard-retrieval-eval",
+    "jkrkjenrjr/ter-bsard-qlora-finetune"
+  ]
+}

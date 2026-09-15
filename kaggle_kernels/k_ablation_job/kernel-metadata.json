@@ -1,0 +1,17 @@
+{
+  "id": "jkrkjenrjr/ter-bsard-k-ablation",
+  "title": "ter bsard k ablation",
+  "code_file": "k_ablation_job.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": [
+    "jkrkjenrjr/ter-bsard-retrieval-eval"
+  ]
+}

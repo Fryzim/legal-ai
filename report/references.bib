@@ -1,0 +1,219 @@
+% references.bib — TER "Assistant juridique : RAG vs Fine-tuning"
+%
+% RÈGLE: chaque entrée de ce fichier a été vérifiée individuellement (arXiv ID,
+% DOI ou lien HAL confirmé réel) avant ajout. Aucune entrée n'est ajoutée "de
+% mémoire" sans vérification. Premier lot vérifié le 2026-07-28 (10 entrées) ;
+% l'objectif du brief est >= 45 références au total, complété progressivement
+% dans les phases suivantes (fine-tuning efficient, RAG avancé, hallucination,
+% NLP juridique francophone, quantification).
+
+% --- Positionnement direct du travail (référence imposée par F. Jacquenet) ---
+@inproceedings{bouvard2024derbyllm,
+  author    = {Bouvard, Christophe and Ciancone, Mathieu and Gourru, Antoine and Schaeffer, Marion},
+  title     = {Derby LLM : {\'E}valuation comparative des approches RAG et fine-tuning},
+  booktitle = {10{\`e}me Conf{\'e}rence Nationale sur les Applications Pratiques de l'Intelligence Artificielle (APIA@PFIA 2024)},
+  year      = {2024},
+  address   = {La Rochelle, France},
+  pages     = {38--47},
+  publisher = {AFIA - Association Fran{\c c}aise pour l'Intelligence Artificielle},
+  note      = {HAL: hal-04638460},
+  url       = {https://hal.science/hal-04638460}
+}
+
+% --- Fine-tuning efficient (LoRA / QLoRA) ---
+@article{hu2021lora,
+  author  = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  title   = {LoRA: Low-Rank Adaptation of Large Language Models},
+  journal = {arXiv preprint arXiv:2106.09685},
+  year    = {2021}
+}
+
+@article{dettmers2023qlora,
+  author  = {Dettmers, Tim and Pagnoni, Artidoro and Holtzman, Ari and Zettlemoyer, Luke},
+  title   = {QLoRA: Efficient Finetuning of Quantized LLMs},
+  journal = {arXiv preprint arXiv:2305.14314},
+  year    = {2023}
+}
+
+% --- RAG ---
+@inproceedings{lewis2020rag,
+  author    = {Lewis, Patrick and Perez, Ethan and Piktus, Aleksandra and Petroni, Fabio and Karpukhin, Vladimir and Goyal, Naman and K{\"u}ttler, Heinrich and Lewis, Mike and Yih, Wen-tau and Rockt{\"a}schel, Tim and Riedel, Sebastian and Kiela, Douwe},
+  title     = {Retrieval-Augmented Generation for Knowledge-Intensive {NLP} Tasks},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2020},
+  note      = {arXiv:2005.11401}
+}
+
+@article{gao2023ragsurvey,
+  author  = {Gao, Yunfan and Xiong, Yun and Gao, Xinyu and Jia, Kangxiang and Pan, Jinliu and Bi, Yuxi and Dai, Yi and Sun, Jiawei and Wang, Meng and Wang, Haofen},
+  title   = {Retrieval-Augmented Generation for Large Language Models: A Survey},
+  journal = {arXiv preprint arXiv:2312.10997},
+  year    = {2023}
+}
+
+% --- Évaluation de génération / QA / LLM-as-judge ---
+@inproceedings{zhang2020bertscore,
+  author    = {Zhang, Tianyi and Kishore, Varsha and Wu, Felix and Weinberger, Kilian Q. and Artzi, Yoav},
+  title     = {BERTScore: Evaluating Text Generation with {BERT}},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2020},
+  note      = {arXiv:1904.09675}
+}
+
+@article{es2023ragas,
+  author  = {Es, Shahul and James, Jithin and Espinosa-Anke, Luis and Schockaert, Steven},
+  title   = {Ragas: Automated Evaluation of Retrieval Augmented Generation},
+  journal = {arXiv preprint arXiv:2309.15217},
+  year    = {2023}
+}
+
+@article{chiang2024chatbotarena,
+  author  = {Chiang, Wei-Lin and Zheng, Lianmin and Sheng, Ying and Angelopoulos, Anastasios Nikolas and Li, Tianle and Li, Dacheng and Zhang, Hao and Zhu, Banghua and Jordan, Michael and Gonzalez, Joseph E. and Stoica, Ion},
+  title   = {Chatbot Arena: An Open Platform for Evaluating {LLMs} by Human Preference},
+  journal = {arXiv preprint arXiv:2403.04132},
+  year    = {2024}
+}
+
+% --- NLP juridique francophone / benchmarks légaux ---
+@inproceedings{louis2022bsard,
+  author    = {Louis, Antoine and Spanakis, Gerasimos},
+  title     = {A Statutory Article Retrieval Dataset in French},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2022},
+  note      = {arXiv:2108.11792}
+}
+
+@article{guha2023legalbench,
+  author  = {Guha, Neel and Nyarko, Julian and Ho, Daniel E. and R{\'e}, Christopher and others},
+  title   = {LegalBench: A Collaboratively Built Benchmark for Measuring Legal Reasoning in Large Language Models},
+  journal = {arXiv preprint arXiv:2308.11462},
+  year    = {2023}
+}
+
+@inproceedings{hendrycks2021cuad,
+  author    = {Hendrycks, Dan and Burns, Collin and Chen, Anya and Ball, Spencer},
+  title     = {{CUAD}: An Expert-Annotated {NLP} Dataset for Legal Contract Review},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2021},
+  note      = {arXiv:2103.06268}
+}
+
+@inproceedings{chalkidis2022lexglue,
+  author    = {Chalkidis, Ilias and Jana, Abhik and Hartung, Dirk and Bommarito, Michael and Androutsopoulos, Ion and Katz, Daniel Martin and Aletras, Nikolaos},
+  title     = {{LexGLUE}: A Benchmark Dataset for Legal Language Understanding in English},
+  booktitle = {Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2022},
+  note      = {arXiv:2110.00976}
+}
+
+% --- Modèles de base ---
+@article{jiang2023mistral7b,
+  author  = {Jiang, Albert Q. and Sablayrolles, Alexandre and Mensch, Arthur and Bamford, Chris and Chaplot, Devendra Singh and de las Casas, Diego and Bressand, Florian and Lengyel, Gianna and Lample, Guillaume and Saulnier, Lucile and Renard Lavaud, L{\'e}lio and Lachaux, Marie-Anne and Stock, Pierre and Le Scao, Teven and Lavril, Thibaut and Wang, Thomas and Lacroix, Timoth{\'e}e and El Sayed, William},
+  title   = {Mistral 7B},
+  journal = {arXiv preprint arXiv:2310.06825},
+  year    = {2023}
+}
+
+@article{touvron2023llama2,
+  author  = {Touvron, Hugo and Martin, Louis and Stone, Kevin and Albert, Peter and Almahairi, Amjad and others and Scialom, Thomas},
+  title   = {Llama 2: Open Foundation and Fine-Tuned Chat Models},
+  journal = {arXiv preprint arXiv:2307.09288},
+  year    = {2023}
+}
+
+% --- Comparaisons RAG vs fine-tuning (suite) ---
+@article{ovadia2023finetuneorretrieve,
+  author  = {Ovadia, Oded and Brief, Menachem and Mishaeli, Moshik and Elisha, Oren},
+  title   = {Fine-Tuning or Retrieval? Comparing Knowledge Injection in LLMs},
+  journal = {arXiv preprint arXiv:2312.05934},
+  year    = {2023}
+}
+
+% --- Hallucination ---
+@article{rawte2023hallucinationsurvey,
+  author  = {Rawte, Vipula and Sheth, Amit and Das, Amitava},
+  title   = {A Survey of Hallucination in Large Foundation Models},
+  journal = {arXiv preprint arXiv:2309.05922},
+  year    = {2023}
+}
+
+% --- Reranker / embeddings multilingues (base de BAAI/bge-reranker-v2-m3) ---
+@article{chen2024m3embedding,
+  author  = {Chen, Jianlv and Xiao, Shitao and Zhang, Peitian and Luo, Kun and Lian, Defu and Liu, Zheng},
+  title   = {M3-Embedding: Multi-Linguality, Multi-Functionality, Multi-Granularity Text Embeddings Through Self-Knowledge Distillation},
+  journal = {arXiv preprint arXiv:2402.03216},
+  year    = {2024}
+}
+
+% --- Retrieval dense (fondations) ---
+@inproceedings{karpukhin2020dpr,
+  author    = {Karpukhin, Vladimir and O{\u{g}}uz, Barlas and Min, Sewon and Lewis, Patrick and Wu, Ledell and Edunov, Sergey and Chen, Danqi and Yih, Wen-tau},
+  title     = {Dense Passage Retrieval for Open-Domain Question Answering},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2020},
+  note      = {arXiv:2004.04906}
+}
+
+% --- Traitement de documents longs (pertinent pour les articles de loi étendus) ---
+@article{beltagy2020longformer,
+  author  = {Beltagy, Iz and Peters, Matthew E. and Cohan, Arman},
+  title   = {Longformer: The Long-Document Transformer},
+  journal = {arXiv preprint arXiv:2004.05150},
+  year    = {2020}
+}
+
+% --- Fondations transformer / instruction-tuning ---
+@inproceedings{vaswani2017attention,
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia},
+  title     = {Attention Is All You Need},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2017},
+  note      = {arXiv:1706.03762}
+}
+
+@article{ouyang2022instructgpt,
+  author  = {Ouyang, Long and Wu, Jeff and Jiang, Xu and Almeida, Diogo and Wainwright, Carroll L. and Mishkin, Pamela and Zhang, Chong and Agarwal, Sandhini and Slama, Katarina and Ray, Alex and Schulman, John and Hilton, Jacob and Kelton, Fraser and Miller, Luke and Simens, Maddie and Askell, Amanda and Welinder, Peter and Christiano, Paul and Leike, Jan and Lowe, Ryan},
+  title   = {Training Language Models to Follow Instructions with Human Feedback},
+  journal = {arXiv preprint arXiv:2203.02155},
+  year    = {2022}
+}
+
+% --- RAG avancé (au-delà du RAG "naïf" de Lewis et al. 2020) ---
+@article{asai2023selfrag,
+  author  = {Asai, Akari and Wu, Zeqiu and Wang, Yizhong and Sil, Avirup and Hajishirzi, Hannaneh},
+  title   = {Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection},
+  journal = {arXiv preprint arXiv:2310.11511},
+  year    = {2023}
+}
+
+% --- Verifiees le 30/07 (recherche web, arXiv ID + auteurs confirmes) ---
+@article{balaguer2024ragvsft,
+  author  = {Balaguer, Angels and Benara, Vinamra and de Freitas Cunha, Renato Luiz and Estev{\~a}o Filho, Roberto de M. and Hendry, Todd and Holstein, Daniel and Marsman, Jennifer and Mecklenburg, Nick and Malvar, Sara and Nunes, Leonardo O. and Padilha, Rafael and Sharp, Morris and Silva, Bruno and Sharma, Swati and Aski, Vijay and Chandra, Ranveer},
+  title   = {{RAG} vs Fine-tuning: Pipelines, Tradeoffs, and a Case Study on Agriculture},
+  journal = {arXiv preprint arXiv:2401.08406},
+  year    = {2024}
+}
+
+@article{louis2023lleqa,
+  author  = {Louis, Antoine and van Dijck, Gijs and Spanakis, Gerasimos},
+  title   = {Interpretable Long-Form Legal Question Answering with Retrieval-Augmented Large Language Models},
+  journal = {arXiv preprint arXiv:2309.17050},
+  year    = {2023}
+}
+
+@inproceedings{lin2004rouge,
+  author    = {Lin, Chin-Yew},
+  title     = {{ROUGE}: A Package for Automatic Evaluation of Summaries},
+  booktitle = {Text Summarization Branches Out},
+  year      = {2004},
+  address   = {Barcelona, Spain},
+  publisher = {Association for Computational Linguistics},
+  pages     = {74--81}
+}
+
+@article{wan2023efficientllmsurvey,
+  author  = {Wan, Zhongwei and Wang, Xin and Liu, Che and Alam, Samiul and Zheng, Yu and Liu, Jiachen and Qu, Zhongnan and Yan, Shen and Zhu, Yi and Zhang, Quanlu and Chowdhury, Mosharaf and Zhang, Mi},
+  title   = {Efficient Large Language Models: A Survey},
+  journal = {arXiv preprint arXiv:2312.03863},
+  year    = {2023}
+}
