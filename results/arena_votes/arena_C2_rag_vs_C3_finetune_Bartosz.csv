@@ -1,0 +1,65 @@
+annotator,question_index,category,config_a,config_b,left_config,right_config,choice,timestamp
+Bartosz,1,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,tie,2026-07-30T21:40:25.013838+00:00
+Bartosz,2,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,left,2026-07-30T21:41:13.880472+00:00
+Bartosz,5,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:41:45.819165+00:00
+Bartosz,7,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:41:57.472546+00:00
+Bartosz,1,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,neither,2026-07-30T21:47:45.068894+00:00
+Bartosz,2,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,neither,2026-07-30T21:48:16.579256+00:00
+Bartosz,5,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,neither,2026-07-30T21:49:04.326374+00:00
+Bartosz,7,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:50:13.750567+00:00
+Bartosz,9,Famille,C2_rag,C3_finetune,C2_rag,C3_finetune,right,2026-07-30T21:52:46.489809+00:00
+Bartosz,10,Justice,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T21:53:58.552626+00:00
+Bartosz,12,Justice,C2_rag,C3_finetune,C2_rag,C3_finetune,tie,2026-07-30T21:55:06.619324+00:00
+Bartosz,14,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:55:56.332366+00:00
+Bartosz,16,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:56:10.813572+00:00
+Bartosz,21,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:56:21.894176+00:00
+Bartosz,28,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:56:37.622272+00:00
+Bartosz,32,Famille,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T21:56:52.793776+00:00
+Bartosz,33,Logement,C2_rag,C3_finetune,C3_finetune,C2_rag,left,2026-07-30T21:57:20.350935+00:00
+Bartosz,34,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:57:38.691085+00:00
+Bartosz,39,Justice,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T21:57:48.876185+00:00
+Bartosz,42,Travail,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T21:57:57.243726+00:00
+Bartosz,53,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,tie,2026-07-30T21:58:16.081331+00:00
+Bartosz,62,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,neither,2026-07-30T21:59:30.388419+00:00
+Bartosz,65,Argent,C2_rag,C3_finetune,C2_rag,C3_finetune,right,2026-07-30T22:00:04.191711+00:00
+Bartosz,66,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:00:41.165295+00:00
+Bartosz,77,Argent,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:01:03.898452+00:00
+Bartosz,78,Etrangers,C2_rag,C3_finetune,C2_rag,C3_finetune,right,2026-07-30T22:01:20.855716+00:00
+Bartosz,79,Travail,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:01:41.130864+00:00
+Bartosz,88,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:02:05.010832+00:00
+Bartosz,91,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:02:17.256223+00:00
+Bartosz,95,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:03:01.001258+00:00
+Bartosz,97,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,left,2026-07-30T22:03:29.136661+00:00
+Bartosz,100,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,tie,2026-07-30T22:15:50.849862+00:00
+Bartosz,105,Etrangers,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:16:07.921553+00:00
+Bartosz,106,Travail,C2_rag,C3_finetune,C2_rag,C3_finetune,tie,2026-07-30T22:17:20.001798+00:00
+Bartosz,109,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:17:36.748919+00:00
+Bartosz,110,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,neither,2026-07-30T22:18:12.390612+00:00
+Bartosz,111,Argent,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:18:41.140927+00:00
+Bartosz,113,Travail,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:19:05.048280+00:00
+Bartosz,117,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,neither,2026-07-30T22:20:01.522585+00:00
+Bartosz,118,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:20:35.881158+00:00
+Bartosz,119,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:21:03.923772+00:00
+Bartosz,127,Argent,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:21:40.909454+00:00
+Bartosz,135,Etrangers,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:22:25.347734+00:00
+Bartosz,137,Etrangers,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:22:31.134785+00:00
+Bartosz,138,Justice,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:22:47.018606+00:00
+Bartosz,145,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,left,2026-07-30T22:23:58.744875+00:00
+Bartosz,148,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:24:20.773700+00:00
+Bartosz,154,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:24:29.497995+00:00
+Bartosz,159,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:24:52.965730+00:00
+Bartosz,165,Logement,C2_rag,C3_finetune,C3_finetune,C2_rag,tie,2026-07-30T22:25:19.140383+00:00
+Bartosz,169,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:25:26.493757+00:00
+Bartosz,171,Logement,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:25:52.397937+00:00
+Bartosz,174,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:26:19.938402+00:00
+Bartosz,185,Travail,C2_rag,C3_finetune,C3_finetune,C2_rag,neither,2026-07-30T22:27:10.346144+00:00
+Bartosz,188,Etrangers,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:27:27.180888+00:00
+Bartosz,190,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:27:50.774017+00:00
+Bartosz,191,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:27:57.840237+00:00
+Bartosz,193,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:28:10.555961+00:00
+Bartosz,195,Logement,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:28:40.623729+00:00
+Bartosz,196,Justice,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:28:58.510402+00:00
+Bartosz,209,Logement,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:29:05.324502+00:00
+Bartosz,213,Travail,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T22:29:14.311466+00:00
+Bartosz,217,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:29:40.747345+00:00
+Bartosz,221,Famille,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T22:29:44.187429+00:00

@@ -1,0 +1,20 @@
+{
+  "corpus_format_counts": {
+    "structured": 13199,
+    "numeric_simple": 9434
+  },
+  "corpus_format_by_law_type": {
+    "federal": {
+      "numeric_simple": 5666,
+      "structured": 8501
+    },
+    "regional": {
+      "numeric_simple": 3768,
+      "structured": 4698
+    }
+  },
+  "test_questions_format_counts": {
+    "numeric_simple": 118,
+    "structured": 104
+  }
+}

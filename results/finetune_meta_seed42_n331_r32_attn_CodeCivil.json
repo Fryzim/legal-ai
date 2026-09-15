@@ -1,0 +1,69 @@
+{
+  "run_tag": "seed42_n331_r32_attn_CodeCivil",
+  "seed": 42,
+  "base_model": "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
+  "epochs": 3,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "target_modules_mode": "attn",
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "train_source": "official",
+  "n_synthetic_extra": 0,
+  "code_filter": "Code Civil",
+  "n_train_examples": 331,
+  "n_val_examples": 100,
+  "trainable_params": 27262976,
+  "total_params": 7275286528,
+  "pct_trainable": 0.3747340519864677,
+  "model_load_seconds": 5.1110076904296875,
+  "train_duration_seconds": 537.8032538890839,
+  "final_train_loss": 0.8318939644192892,
+  "final_eval_loss": 1.0152848958969116,
+  "overfit_gap": 0.4623441457748413,
+  "train_loss_history": [
+    {
+      "epoch": 0.4819277108433735,
+      "train_loss": 1.324534034729004
+    },
+    {
+      "epoch": 0.963855421686747,
+      "train_loss": 1.0412886619567872
+    },
+    {
+      "epoch": 1.4337349397590362,
+      "train_loss": 0.8314046859741211
+    },
+    {
+      "epoch": 1.9156626506024095,
+      "train_loss": 0.7073668956756591
+    },
+    {
+      "epoch": 2.3855421686746987,
+      "train_loss": 0.6161272048950195
+    },
+    {
+      "epoch": 2.8674698795180724,
+      "train_loss": 0.5529407501220703
+    }
+  ],
+  "eval_loss_history": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 1.1389446258544922
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 1.0461865663528442
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 1.0152848958969116
+    }
+  ],
+  "timestamp": "2026-07-30T04:01:54Z"
+}

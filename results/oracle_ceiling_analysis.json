@@ -1,0 +1,31 @@
+{
+  "note": "Oracle = contexte ideal (vrais articles pertinents injectes directement, sans passer par le retriever). Decompose l'erreur totale du RAG en erreur de recherche (retrieval) vs erreur de generation.",
+  "C1_zero_shot_sans_contexte": {
+    "rouge_l_f1_mean": 0.10996142221331458,
+    "bertscore_f1_mean": 0.7788290990902497,
+    "citation_precision_mean": 0.015765765765765764,
+    "citation_recall_mean": 0.01066066066066066,
+    "citation_exact_match_rate": 0.0045045045045045045,
+    "hallucination_rate": 0.14414414414414414
+  },
+  "C2_rag_retrieval_reel": {
+    "rouge_l_f1_mean": 0.13948367443227833,
+    "bertscore_f1_mean": 0.7946601896672636,
+    "citation_precision_mean": 0.17635135135135135,
+    "citation_recall_mean": 0.13243360086942083,
+    "citation_exact_match_rate": 0.036036036036036036,
+    "hallucination_rate": 0.23423423423423423
+  },
+  "oracle_contexte_parfait": {
+    "rouge_l_f1_mean": 0.25213918866137347,
+    "bertscore_f1_mean": 0.8348155129063237,
+    "citation_precision_mean": 0.6651651651651652,
+    "citation_recall_mean": 0.5442351036101036,
+    "citation_exact_match_rate": 0.3108108108108108,
+    "hallucination_rate": 0.11711711711711711
+  },
+  "interpretation": {
+    "gap_citation_exact_match_du_a_la_recherche": 0.27477477477477474,
+    "hallucination_pire_avec_mauvais_contexte_quavec_aucun": true
+  }
+}

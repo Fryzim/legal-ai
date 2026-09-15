@@ -1,0 +1,105 @@
+{
+  "run_tag": "seed42_n786_r32_attn",
+  "seed": 42,
+  "base_model": "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
+  "epochs": 3,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "target_modules_mode": "attn",
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "train_source": "official",
+  "n_synthetic_extra": 0,
+  "code_filter": null,
+  "n_train_examples": 786,
+  "n_val_examples": 100,
+  "trainable_params": 27262976,
+  "total_params": 7275286528,
+  "pct_trainable": 0.3747340519864677,
+  "model_load_seconds": 4.83378267288208,
+  "train_duration_seconds": 1215.657267332077,
+  "final_train_loss": 0.7359389781951904,
+  "final_eval_loss": 0.5607205629348755,
+  "overfit_gap": 0.1352177381515503,
+  "train_loss_history": [
+    {
+      "epoch": 0.20304568527918782,
+      "train_loss": 1.3522305488586426
+    },
+    {
+      "epoch": 0.40609137055837563,
+      "train_loss": 1.1925699234008789
+    },
+    {
+      "epoch": 0.6091370558375635,
+      "train_loss": 1.0920825004577637
+    },
+    {
+      "epoch": 0.8121827411167513,
+      "train_loss": 0.974453353881836
+    },
+    {
+      "epoch": 1.0,
+      "train_loss": 0.8510099411010742
+    },
+    {
+      "epoch": 1.2030456852791878,
+      "train_loss": 0.7450070381164551
+    },
+    {
+      "epoch": 1.4060913705583755,
+      "train_loss": 0.637639045715332
+    },
+    {
+      "epoch": 1.6091370558375635,
+      "train_loss": 0.6365254878997803
+    },
+    {
+      "epoch": 1.8121827411167513,
+      "train_loss": 0.6421473979949951
+    },
+    {
+      "epoch": 2.0,
+      "train_loss": 0.6412787914276123
+    },
+    {
+      "epoch": 2.203045685279188,
+      "train_loss": 0.49398012161254884
+    },
+    {
+      "epoch": 2.4060913705583755,
+      "train_loss": 0.45955843925476075
+    },
+    {
+      "epoch": 2.6091370558375635,
+      "train_loss": 0.47057089805603025
+    },
+    {
+      "epoch": 2.812182741116751,
+      "train_loss": 0.4245283603668213
+    },
+    {
+      "epoch": 3.0,
+      "train_loss": 0.4255028247833252
+    }
+  ],
+  "eval_loss_history": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 0.8578613996505737
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 0.6322038173675537
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 0.5607205629348755
+    }
+  ],
+  "timestamp": "2026-07-30T03:00:33Z"
+}

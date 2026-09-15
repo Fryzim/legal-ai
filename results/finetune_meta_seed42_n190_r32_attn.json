@@ -1,0 +1,57 @@
+{
+  "run_tag": "seed42_n190_r32_attn",
+  "seed": 42,
+  "base_model": "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
+  "epochs": 3,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "target_modules_mode": "attn",
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "train_source": "official",
+  "n_synthetic_extra": 0,
+  "code_filter": null,
+  "n_train_examples": 190,
+  "n_val_examples": 100,
+  "trainable_params": 27262976,
+  "total_params": 7275286528,
+  "pct_trainable": 0.3747340519864677,
+  "model_load_seconds": 4.132699489593506,
+  "train_duration_seconds": 334.37789154052734,
+  "final_train_loss": 1.122415820757548,
+  "final_eval_loss": 1.0981253385543823,
+  "overfit_gap": 0.10199525356292727,
+  "train_loss_history": [
+    {
+      "epoch": 0.8333333333333334,
+      "train_loss": 1.348219871520996
+    },
+    {
+      "epoch": 1.6666666666666665,
+      "train_loss": 1.1112760543823241
+    },
+    {
+      "epoch": 2.5,
+      "train_loss": 0.9961300849914551
+    }
+  ],
+  "eval_loss_history": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 1.2180575132369995
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 1.1277352571487427
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 1.0981253385543823
+    }
+  ],
+  "timestamp": "2026-07-30T02:29:09Z"
+}

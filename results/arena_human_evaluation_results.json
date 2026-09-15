@@ -1,0 +1,585 @@
+{
+  "config_a": "C2_rag",
+  "config_b": "C3_finetune",
+  "annotators": [
+    "Bartosz",
+    "Chaabane",
+    "Arman"
+  ],
+  "n_questions_per_annotator": 60,
+  "timestamp": "2026-08-14T13:04:03.033645+00:00",
+  "note": "Doublons dedupliques par question_index (garde le dernier vote) via arena_app._load_votes, cf. bug decouvert dans arena_C2_rag_vs_C3_finetune_Bartosz.csv (4 questions votees deux fois).",
+  "inter_annotator_agreement": {
+    "Bartosz_vs_Chaabane": {
+      "cohen_kappa": 0.38871473354231967,
+      "exact_agreement": 0.5666666666666667,
+      "n_common": 60
+    },
+    "Bartosz_vs_Arman": {
+      "cohen_kappa": 0.47136563876651993,
+      "exact_agreement": 0.6666666666666666,
+      "n_common": 60
+    },
+    "Chaabane_vs_Arman": {
+      "cohen_kappa": 0.3312101910828026,
+      "exact_agreement": 0.5333333333333333,
+      "n_common": 60
+    }
+  },
+  "bradley_terry_ranking": {
+    "ranking": [
+      {
+        "config": "C2_rag",
+        "strength_bt": 0.0,
+        "score_elo_like": 1368.6862442640634
+      },
+      {
+        "config": "C3_finetune",
+        "strength_bt": -1.843431221320317,
+        "score_elo_like": 631.3137557359366
+      }
+    ],
+    "n_votes_used": 161,
+    "converged": true,
+    "note": "config non presente dans une comparaison d'arene = absente du classement (ex: C1 si jamais oppose)"
+  },
+  "preference_by_category": {
+    "Argent": {
+      "n_votes": 30,
+      "pct_C2_rag": 76.66666666666667,
+      "pct_C3_finetune": 3.3333333333333335,
+      "pct_tie": 10.0,
+      "pct_neither": 10.0
+    },
+    "Etrangers": {
+      "n_votes": 30,
+      "pct_C2_rag": 60.0,
+      "pct_C3_finetune": 20.0,
+      "pct_tie": 16.666666666666664,
+      "pct_neither": 3.3333333333333335
+    },
+    "Famille": {
+      "n_votes": 30,
+      "pct_C2_rag": 86.66666666666667,
+      "pct_C3_finetune": 6.666666666666667,
+      "pct_tie": 0.0,
+      "pct_neither": 6.666666666666667
+    },
+    "Justice": {
+      "n_votes": 30,
+      "pct_C2_rag": 70.0,
+      "pct_C3_finetune": 3.3333333333333335,
+      "pct_tie": 16.666666666666664,
+      "pct_neither": 10.0
+    },
+    "Logement": {
+      "n_votes": 30,
+      "pct_C2_rag": 66.66666666666666,
+      "pct_C3_finetune": 6.666666666666667,
+      "pct_tie": 6.666666666666667,
+      "pct_neither": 20.0
+    },
+    "Protection sociale": {
+      "n_votes": 12,
+      "pct_C2_rag": 50.0,
+      "pct_C3_finetune": 8.333333333333332,
+      "pct_tie": 8.333333333333332,
+      "pct_neither": 33.33333333333333
+    },
+    "Travail": {
+      "n_votes": 18,
+      "pct_C2_rag": 72.22222222222221,
+      "pct_C3_finetune": 0.0,
+      "pct_tie": 11.11111111111111,
+      "pct_neither": 16.666666666666664
+    }
+  },
+  "full_agreement_distribution": {
+    "n_questions": 60,
+    "pct_unanimous": 45.0,
+    "pct_majority_only": 41.666666666666664,
+    "pct_no_agreement": 13.333333333333334,
+    "per_question": {
+      "1": {
+        "votes": [
+          "neither",
+          "neither",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "2": {
+        "votes": [
+          "neither",
+          "right",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "5": {
+        "votes": [
+          "neither",
+          "right",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "7": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "9": {
+        "votes": [
+          "right",
+          "right",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "10": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "12": {
+        "votes": [
+          "tie",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "14": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "16": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "21": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "28": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "32": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "33": {
+        "votes": [
+          "left",
+          "left",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "34": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "39": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "42": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "53": {
+        "votes": [
+          "tie",
+          "right",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "62": {
+        "votes": [
+          "neither",
+          "left",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "65": {
+        "votes": [
+          "right",
+          "left",
+          "neither"
+        ],
+        "agreement_level": "aucun"
+      },
+      "66": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "77": {
+        "votes": [
+          "left",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "78": {
+        "votes": [
+          "right",
+          "right",
+          "neither"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "79": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "88": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "91": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "95": {
+        "votes": [
+          "right",
+          "neither",
+          "tie"
+        ],
+        "agreement_level": "aucun"
+      },
+      "97": {
+        "votes": [
+          "left",
+          "right",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "100": {
+        "votes": [
+          "tie",
+          "tie",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "105": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "106": {
+        "votes": [
+          "tie",
+          "neither",
+          "left"
+        ],
+        "agreement_level": "aucun"
+      },
+      "109": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "110": {
+        "votes": [
+          "neither",
+          "right",
+          "tie"
+        ],
+        "agreement_level": "aucun"
+      },
+      "111": {
+        "votes": [
+          "left",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "113": {
+        "votes": [
+          "left",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "117": {
+        "votes": [
+          "neither",
+          "tie",
+          "right"
+        ],
+        "agreement_level": "aucun"
+      },
+      "118": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "119": {
+        "votes": [
+          "left",
+          "neither",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "127": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "135": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "137": {
+        "votes": [
+          "left",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "138": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "145": {
+        "votes": [
+          "left",
+          "tie",
+          "tie"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "148": {
+        "votes": [
+          "right",
+          "tie",
+          "left"
+        ],
+        "agreement_level": "aucun"
+      },
+      "154": {
+        "votes": [
+          "right",
+          "left",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "159": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "165": {
+        "votes": [
+          "tie",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "aucun"
+      },
+      "169": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "171": {
+        "votes": [
+          "right",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "174": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "185": {
+        "votes": [
+          "neither",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "188": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "190": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      },
+      "191": {
+        "votes": [
+          "right",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "193": {
+        "votes": [
+          "left",
+          "neither",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "195": {
+        "votes": [
+          "left",
+          "neither",
+          "tie"
+        ],
+        "agreement_level": "aucun"
+      },
+      "196": {
+        "votes": [
+          "left",
+          "neither",
+          "left"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "209": {
+        "votes": [
+          "right",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "213": {
+        "votes": [
+          "left",
+          "left",
+          "left"
+        ],
+        "agreement_level": "unanime"
+      },
+      "217": {
+        "votes": [
+          "right",
+          "neither",
+          "right"
+        ],
+        "agreement_level": "majoritaire"
+      },
+      "221": {
+        "votes": [
+          "right",
+          "right",
+          "right"
+        ],
+        "agreement_level": "unanime"
+      }
+    }
+  }
+}

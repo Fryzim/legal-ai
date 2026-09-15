@@ -1,0 +1,15 @@
+{
+  "seed": 42,
+  "base_model": "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
+  "epochs": 3,
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "n_train_examples": 580,
+  "trainable_params": 13631488,
+  "total_params": 7261655040,
+  "pct_trainable": 0.18771874903052405,
+  "model_load_seconds": 41.25824522972107,
+  "train_duration_seconds": 34274.86515402794,
+  "final_train_loss": 0.8411170528815674,
+  "timestamp": "2026-07-29T04:46:15Z"
+}

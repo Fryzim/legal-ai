@@ -1,0 +1,35 @@
+{
+  "note": "Specialiste entraine sur 331 exemples Code Civil uniquement vs generaliste sur 580 exemples tous domaines -- confond specialisation ET taille du train (331<580), a nuancer.",
+  "C3_finetune": {
+    "in_domain_code_civil": {
+      "n": 86,
+      "generaliste_rouge_l": 0.17063452779807967,
+      "specialiste_rouge_l": 0.18065332851874732,
+      "generaliste_hallucination": 0.046511627906976744,
+      "specialiste_hallucination": 0.1511627906976744
+    },
+    "hors_domaine": {
+      "n": 136,
+      "generaliste_rouge_l": 0.13161229384441572,
+      "specialiste_rouge_l": 0.12292353414699508,
+      "generaliste_hallucination": 0.051470588235294115,
+      "specialiste_hallucination": 0.022058823529411766
+    }
+  },
+  "C4_finetune_rag": {
+    "in_domain_code_civil": {
+      "n": 86,
+      "generaliste_rouge_l": 0.21466795236349562,
+      "specialiste_rouge_l": 0.1508707631513183,
+      "generaliste_hallucination": 0.1511627906976744,
+      "specialiste_hallucination": 0.08139534883720931
+    },
+    "hors_domaine": {
+      "n": 136,
+      "generaliste_rouge_l": 0.15649745702331241,
+      "specialiste_rouge_l": 0.134491700490127,
+      "generaliste_hallucination": 0.17647058823529413,
+      "specialiste_hallucination": 0.10294117647058823
+    }
+  }
+}

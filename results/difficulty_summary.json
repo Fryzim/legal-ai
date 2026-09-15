@@ -1,0 +1,28 @@
+{
+  "question_length_words": {
+    "mean": 15.842342342342342,
+    "median": 15.0,
+    "std": 6.616680546688955,
+    "min": 5,
+    "max": 41
+  },
+  "n_gold_articles": {
+    "mean": 4.7792792792792795,
+    "median": 2.0,
+    "std": 9.223269972221008
+  },
+  "difficulty_bucket_counts": {
+    "1 article": 83,
+    "2-3 articles": 76,
+    "4+ articles": 63
+  },
+  "category_train_frequency": {
+    "Argent": 0.15914221218961624,
+    "Etrangers": 0.056433408577878104,
+    "Famille": 0.30699774266365687,
+    "Justice": 0.136568848758465,
+    "Logement": 0.2686230248306998,
+    "Protection sociale": 0.039503386004514675,
+    "Travail": 0.0327313769751693
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "classifier": {
+    "baseline_majority_class_auc": 0.5,
+    "target_col": "citation_exact_match",
+    "n_observations": 888,
+    "positive_rate": 0.01126126126126126
+  },
+  "classifier_auc": {
+    "logistic_regression": 0.8782460136674259,
+    "random_forest": 0.8384396355353075
+  },
+  "classifier_feature_importance_rf": {
+    "question_length_words": 0.38913646329211027,
+    "n_gold_articles": 0.15846793121599703,
+    "category_train_frequency": 0.1848302933560568,
+    "has_structured_gold": 0.06590099242132388,
+    "config_C1_zero_shot": 0.02549127928583494,
+    "config_C2_rag": 0.1265544680427249,
+    "config_C3_finetune": 0.02749433240499532,
+    "config_C4_finetune_rag": 0.022124239980956868
+  },
+  "regressor_r2": {
+    "linear_regression": 0.13644857235495134,
+    "random_forest": 0.1661854851520751
+  }
+}

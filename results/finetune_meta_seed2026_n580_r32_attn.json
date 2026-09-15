@@ -1,0 +1,89 @@
+{
+  "run_tag": "seed2026_n580_r32_attn",
+  "seed": 2026,
+  "base_model": "unsloth/mistral-7b-instruct-v0.3-bnb-4bit",
+  "epochs": 3,
+  "lora_r": 32,
+  "lora_alpha": 32,
+  "target_modules_mode": "attn",
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "train_source": "official",
+  "n_synthetic_extra": 0,
+  "code_filter": null,
+  "n_train_examples": 580,
+  "n_val_examples": 100,
+  "trainable_params": 27262976,
+  "total_params": 7275286528,
+  "pct_trainable": 0.3747340519864677,
+  "model_load_seconds": 4.860618829727173,
+  "train_duration_seconds": 913.9000902175903,
+  "final_train_loss": 0.8496090372403463,
+  "final_eval_loss": 0.6888590455055237,
+  "overfit_gap": 0.14087945222854614,
+  "train_loss_history": [
+    {
+      "epoch": 0.27586206896551724,
+      "train_loss": 1.3787995338439942
+    },
+    {
+      "epoch": 0.5517241379310345,
+      "train_loss": 1.1957340240478516
+    },
+    {
+      "epoch": 0.8275862068965517,
+      "train_loss": 1.104899024963379
+    },
+    {
+      "epoch": 1.0827586206896551,
+      "train_loss": 0.9912660598754883
+    },
+    {
+      "epoch": 1.3586206896551725,
+      "train_loss": 0.853523063659668
+    },
+    {
+      "epoch": 1.6344827586206896,
+      "train_loss": 0.7488111019134521
+    },
+    {
+      "epoch": 1.910344827586207,
+      "train_loss": 0.7531819820404053
+    },
+    {
+      "epoch": 2.1655172413793102,
+      "train_loss": 0.6819288730621338
+    },
+    {
+      "epoch": 2.4413793103448276,
+      "train_loss": 0.5807178974151611
+    },
+    {
+      "epoch": 2.717241379310345,
+      "train_loss": 0.5600440502166748
+    },
+    {
+      "epoch": 2.9931034482758623,
+      "train_loss": 0.5479795932769775
+    }
+  ],
+  "eval_loss_history": [
+    {
+      "epoch": 1.0,
+      "eval_loss": 0.9743251204490662
+    },
+    {
+      "epoch": 2.0,
+      "eval_loss": 0.7528761029243469
+    },
+    {
+      "epoch": 3.0,
+      "eval_loss": 0.6888590455055237
+    }
+  ],
+  "timestamp": "2026-07-30T01:46:47Z"
+}

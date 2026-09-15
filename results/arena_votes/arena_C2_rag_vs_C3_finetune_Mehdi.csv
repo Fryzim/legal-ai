@@ -1,0 +1,4 @@
+annotator,question_index,category,config_a,config_b,left_config,right_config,choice,timestamp
+Mehdi,1,Protection sociale,C2_rag,C3_finetune,C2_rag,C3_finetune,left,2026-07-30T21:38:29.885238+00:00
+Mehdi,2,Argent,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:38:38.856475+00:00
+Mehdi,5,Justice,C2_rag,C3_finetune,C3_finetune,C2_rag,right,2026-07-30T21:41:58.465242+00:00
