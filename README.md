@@ -18,14 +18,21 @@ Un modèle généraliste (Mistral-7B-Instruct) répond mal aux questions juridiq
 
 La combinaison fine-tuning + RAG obtient le meilleur ROUGE-L (0.179 contre 0.110 en zero-shot), mais aucune configuration ne résout le vrai facteur de difficulté : le nombre d'articles de loi à combiner pour répondre correctement, qui corrèle négativement et significativement (p < 0.0001) avec la qualité dans les 4 configurations.
 
+## Reporting
+
+- **Live dashboard :** [fryzim.github.io/legal-ai](https://fryzim.github.io/legal-ai/) — Recall@k par méthode de retrieval, ROUGE-L par configuration (avec IC 95%), écart par catégorie juridique, corrélation difficulté/qualité (source dans `docs/index.html`, chiffres repris de `RESULTS.md`).
+- **Power Query :** `reporting/power_query.m` — charge `results/difficulty_table.csv` (une ligne par question de test) pour Power BI/Excel.
+
 ## Contenu du dépôt
 
 ```
 src/                  pipeline (retrieval, fine-tuning, génération, analyses statistiques)
 kaggle_kernels/       jobs exécutés sur GPU Kaggle/RunPod (un par étape du pipeline)
-results/              sorties JSON brutes de chaque expérience
+results/              sorties JSON/CSV brutes de chaque expérience
 figures/, tables/     figures et tableaux générés pour le rapport
 report/               rapport LaTeX complet
+docs/index.html       dashboard de reporting (GitHub Pages)
+reporting/power_query.m   script Power Query (M) pour Power BI / Excel
 RESULTS.md            résultats chiffrés consolidés, générés automatiquement depuis results/
 DIFFICULTES.md        problèmes techniques rencontrés et solutions retenues
 ```

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Legal AI — Reporting</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1: #fcfcfb; --page: #f9f9f7; --text-primary: #0b0b0b; --text-secondary: #52514e;
+    --muted: #898781; --grid: #e1e0d9; --baseline: #c3c2b7; --border: rgba(11,11,11,0.10); --card-bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:where(:not([data-theme="light"])) {
+      color-scheme: dark;
+      --surface-1: #1a1a19; --page: #0d0d0d; --text-primary: #ffffff; --text-secondary: #c3c2b7;
+      --muted: #898781; --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10); --card-bg: #201f1d;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1: #1a1a19; --page: #0d0d0d; --text-primary: #ffffff; --text-secondary: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10); --card-bg: #201f1d;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--page); color: var(--text-primary); }
+  header { padding: 28px 24px 8px; max-width: 1100px; margin: 0 auto; position: relative; }
+  header h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  header p { color: var(--text-secondary); margin: 0 0 16px; max-width: 75ch; }
+  .theme-toggle { position: absolute; top: 24px; right: 24px; border: 1px solid var(--border); background: var(--card-bg);
+    color: var(--text-primary); border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 0.85rem; }
+  main { max-width: 1100px; margin: 0 auto; padding: 0 24px 60px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; margin-bottom: 24px; }
+  .kpi { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .kpi .value { font-size: 1.6rem; font-weight: 600; }
+  .kpi .label { color: var(--text-secondary); font-size: 0.8rem; }
+  section { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  section h2 { font-size: 1.05rem; margin: 0 0 4px; }
+  section .sub { color: var(--text-secondary); font-size: 0.85rem; margin: 0 0 14px; }
+  .chart-wrap { position: relative; height: 320px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 14px; }
+  .cat-panel h3 { font-size: 0.8rem; margin: 0 0 6px; color: var(--text-secondary); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+  th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--grid); }
+  th { color: var(--text-secondary); font-weight: 600; }
+  details summary { cursor: pointer; color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px; }
+  footer { max-width: 1100px; margin: 0 auto; padding: 10px 24px 40px; color: var(--muted); font-size: 0.8rem; }
+  footer a { color: inherit; }
+  @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<button class="theme-toggle" id="themeToggle">🌓 Thème</button>
+<header>
+  <h1>Assistant IA juridique — Reporting</h1>
+  <p>RAG vs fine-tuning (QLoRA) sur Mistral-7B, évalué sur BSARD (22,633 articles, 222 questions de test). Chiffres tirés de <code>RESULTS.md</code> — voir le <a href="https://github.com/Fryzim/legal-ai">code et le rapport complet</a>.</p>
+</header>
+<main>
+  <div class="kpis">
+    <div class="kpi"><div class="value">22,633</div><div class="label">articles de loi (corpus)</div></div>
+    <div class="kpi"><div class="value">222</div><div class="label">questions de test</div></div>
+    <div class="kpi"><div class="value">4</div><div class="label">configurations comparées</div></div>
+    <div class="kpi"><div class="value">0.179</div><div class="label">meilleur ROUGE-L (Fine-tune+RAG)</div></div>
+  </div>
+
+  <section>
+    <h2>Retrieval — Recall@k</h2>
+    <p class="sub">Rappel du bon article de loi parmi les k premiers résultats, par méthode de recherche.</p>
+    <div class="chart-wrap"><canvas id="chartRetrieval"></canvas></div>
+    <details><summary>Voir les données en table</summary><div id="tableRetrieval"></div></details>
+  </section>
+
+  <div class="grid2">
+    <section>
+      <h2>Qualité de génération (ROUGE-L)</h2>
+      <p class="sub">Intervalle de confiance bootstrap 95% en barre d'erreur.</p>
+      <div class="chart-wrap"><canvas id="chartRouge"></canvas></div>
+    </section>
+    <section>
+      <h2>Fidélité &amp; pertinence (LLM-judge)</h2>
+      <p class="sub">Fidélité : recouvrement des passages d'intérêt. Pertinence : jugement Phi-3.5, moyenné sur 10 échantillons.</p>
+      <div class="chart-wrap"><canvas id="chartFidelity"></canvas></div>
+    </section>
+  </div>
+
+  <section>
+    <h2>ROUGE-L par catégorie juridique</h2>
+    <p class="sub">Les 4 configurations comparées au sein de chaque catégorie (n = nombre de questions test).</p>
+    <div class="cat-grid" id="catGrid"></div>
+  </section>
+
+  <section>
+    <h2>Corrélation difficulté / qualité (Spearman)</h2>
+    <p class="sub">Corrélation entre le nombre d'articles de loi requis pour répondre et le ROUGE-L obtenu — négative et significative (p&lt;0.0001) dans les 4 configurations : plus une question combine de règles, plus la qualité chute, quelle que soit la méthode.</p>
+    <table>
+      <thead><tr><th>Configuration</th><th>r (n articles gold)</th></tr></thead>
+      <tbody id="spearmanTable"></tbody>
+    </table>
+  </section>
+</main>
+<footer>Chiffres extraits de <code>RESULTS.md</code>, générés depuis les résultats bruts de <code>results/</code> — <a href="https://github.com/Fryzim/legal-ai">retour au dépôt</a>.</footer>
+
+<script>
+const DATA = {"kpis": {"corpus": 22633, "test_questions": 222, "n_configs": 4, "best_rouge": 0.179}, "retrieval": {"k": [1, 3, 5, 10, 20], "methods": {"BM25": [0.063, 0.14, 0.184, 0.224, 0.289], "mpnet": [0.021, 0.045, 0.074, 0.097, 0.124], "e5-large": [0.083, 0.169, 0.211, 0.296, 0.377], "Hybrid BM25+e5": [0.106, 0.196, 0.25, 0.322, 0.39]}}, "configs": ["C1_zero_shot", "C2_rag", "C3_finetune", "C4_finetune_rag"], "config_labels": {"C1_zero_shot": "Zero-shot", "C2_rag": "RAG", "C3_finetune": "Fine-tune", "C4_finetune_rag": "Fine-tune + RAG"}, "generation": {"C1_zero_shot": {"rouge_l": 0.11, "ci": [0.1037, 0.1163], "bertscore": 0.7788, "fidelity": 0.054, "judge": 5.0, "spearman_r": -0.452}, "C2_rag": {"rouge_l": 0.1395, "ci": [0.1292, 0.1511], "bertscore": 0.7947, "fidelity": 0.295, "judge": 4.85, "spearman_r": -0.336}, "C3_finetune": {"rouge_l": 0.1467, "ci": [0.136, 0.1598], "bertscore": 0.8009, "fidelity": 0.298, "judge": 4.731, "spearman_r": -0.51}, "C4_finetune_rag": {"rouge_l": 0.179, "ci": [0.1565, 0.2017], "bertscore": 0.7978, "fidelity": 0.324, "judge": 4.617, "spearman_r": -0.353}}, "categories": {"Argent": {"n": 36, "values": [0.112, 0.167, 0.128, 0.191]}, "Etrangers": {"n": 13, "values": [0.096, 0.118, 0.126, 0.117]}, "Famille": {"n": 67, "values": [0.117, 0.146, 0.179, 0.182]}, "Justice": {"n": 30, "values": [0.082, 0.099, 0.105, 0.116]}, "Logement": {"n": 66, "values": [0.118, 0.14, 0.149, 0.216]}, "Protection sociale": {"n": 4, "values": [0.087, 0.126, 0.112, 0.137]}, "Travail": {"n": 6, "values": [0.121, 0.153, 0.154, 0.138]}}};
+const CONFIG_LIGHT = {"C1_zero_shot": "#2a78d6", "C2_rag": "#1baf7a", "C3_finetune": "#4a3aa7", "C4_finetune_rag": "#e34948"};
+const CONFIG_DARK = {"C1_zero_shot": "#3987e5", "C2_rag": "#199e70", "C3_finetune": "#9085e9", "C4_finetune_rag": "#e66767"};
+const METHOD_LIGHT = {"BM25": "#2a78d6", "mpnet": "#eb6834", "e5-large": "#1baf7a", "Hybrid BM25+e5": "#4a3aa7"};
+const METHOD_DARK = {"BM25": "#3987e5", "mpnet": "#d95926", "e5-large": "#199e70", "Hybrid BM25+e5": "#9085e9"};
+
+function isDark() {
+  const t = document.documentElement.getAttribute('data-theme');
+  if (t === 'dark') return true;
+  if (t === 'light') return false;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+function ink() { return isDark() ? '#ffffff' : '#0b0b0b'; }
+function inkSecondary() { return isDark() ? '#c3c2b7' : '#52514e'; }
+function gridColor() { return isDark() ? '#2c2c2a' : '#e1e0d9'; }
+function configColor(c) { return (isDark() ? CONFIG_DARK : CONFIG_LIGHT)[c]; }
+function methodColor(m) { return (isDark() ? METHOD_DARK : METHOD_LIGHT)[m]; }
+function label(c) { return DATA.config_labels[c]; }
+
+let charts = [];
+function destroyAll() { charts.forEach(c => c.destroy()); charts = []; }
+
+function renderRetrieval() {
+  const datasets = Object.entries(DATA.retrieval.methods).map(([name, vals]) => ({
+    label: name, data: vals, borderColor: methodColor(name), backgroundColor: methodColor(name),
+    borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0,
+  }));
+  const c = new Chart(document.getElementById('chartRetrieval'), {
+    type: 'line',
+    data: { labels: DATA.retrieval.k.map(k => 'k=' + k), datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { color: ink(), boxWidth: 12, font: { size: 11 } } },
+        tooltip: { backgroundColor: isDark() ? '#201f1d' : '#ffffff', titleColor: ink(), bodyColor: inkSecondary(), borderColor: gridColor(), borderWidth: 1 },
+      },
+      scales: {
+        x: { ticks: { color: inkSecondary() }, grid: { color: gridColor() } },
+        y: { title: { display: true, text: 'Recall', color: inkSecondary() }, min: 0, max: 0.45,
+              ticks: { color: inkSecondary() }, grid: { color: gridColor() } },
+      },
+    },
+  });
+  charts.push(c);
+  const rows = DATA.retrieval.k.map((k, i) =>
+    `<tr><td>k=${k}</td>` + Object.entries(DATA.retrieval.methods).map(([name, vals]) => `<td>${vals[i]}</td>`).join('') + `</tr>`
+  ).join('');
+  const header = '<tr><th>k</th>' + Object.keys(DATA.retrieval.methods).map(n => `<th>${n}</th>`).join('') + '</tr>';
+  document.getElementById('tableRetrieval').innerHTML = `<table><thead>${header}</thead><tbody>${rows}</tbody></table>`;
+}
+
+function renderRouge() {
+  const configs = DATA.configs;
+  const values = configs.map(c => DATA.generation[c].rouge_l);
+  const errors = configs.map(c => {
+    const [lo, hi] = DATA.generation[c].ci;
+    return [DATA.generation[c].rouge_l - lo, hi - DATA.generation[c].rouge_l];
+  });
+  const c = new Chart(document.getElementById('chartRouge'), {
+    type: 'bar',
+    data: {
+      labels: configs.map(label),
+      datasets: [{
+        data: values, backgroundColor: configs.map(configColor), borderRadius: 4,
+        errorBars: errors,
+      }],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false },
+        tooltip: { callbacks: { label: (ctx) => {
+          const [lo, hi] = DATA.generation[configs[ctx.dataIndex]].ci;
+          return `ROUGE-L : ${ctx.parsed.y} (IC95% [${lo}, ${hi}])`;
+        } } } },
+      scales: {
+        x: { ticks: { color: ink(), font: { size: 10 } }, grid: { display: false } },
+        y: { title: { display: true, text: 'ROUGE-L', color: inkSecondary() }, min: 0,
+              ticks: { color: inkSecondary() }, grid: { color: gridColor() } },
+      },
+    },
+    plugins: [{
+      id: 'errbars',
+      afterDraw(chart) {
+        const {ctx} = chart;
+        chart.getDatasetMeta(0).data.forEach((bar, i) => {
+          const [down, up] = errors[i];
+          const yScale = chart.scales.y;
+          const x = bar.x;
+          const yTop = yScale.getPixelForValue(values[i] + up);
+          const yBot = yScale.getPixelForValue(values[i] - down);
+          ctx.save();
+          ctx.strokeStyle = inkSecondary();
+          ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.moveTo(x, yTop); ctx.lineTo(x, yBot); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x-5, yTop); ctx.lineTo(x+5, yTop); ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(x-5, yBot); ctx.lineTo(x+5, yBot); ctx.stroke();
+          ctx.restore();
+        });
+      }
+    }],
+  });
+  charts.push(c);
+}
+
+function renderFidelity() {
+  const configs = DATA.configs;
+  const c = new Chart(document.getElementById('chartFidelity'), {
+    type: 'bar',
+    data: {
+      labels: configs.map(label),
+      datasets: [
+        { label: 'Fidélité', data: configs.map(c => DATA.generation[c].fidelity), backgroundColor: configs.map(configColor), borderRadius: 4, yAxisID: 'y' },
+      ],
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { color: ink(), font: { size: 10 } }, grid: { display: false } },
+        y: { title: { display: true, text: 'Fidélité (0-1)', color: inkSecondary() }, min: 0, max: 0.4,
+              ticks: { color: inkSecondary() }, grid: { color: gridColor() } },
+      },
+    },
+  });
+  charts.push(c);
+}
+
+function renderCategories() {
+  const grid = document.getElementById('catGrid');
+  grid.innerHTML = '';
+  Object.entries(DATA.categories).forEach(([cat, info]) => {
+    const id = 'cat_' + cat.replace(/[^a-zA-Z0-9]/g, '_');
+    const panel = document.createElement('div');
+    panel.className = 'cat-panel';
+    panel.innerHTML = `<h3>${cat} (n=${info.n})</h3><div class="chart-wrap" style="height:160px"><canvas id="${id}"></canvas></div>`;
+    grid.appendChild(panel);
+    const c = new Chart(document.getElementById(id), {
+      type: 'bar',
+      data: { labels: DATA.configs.map(label), datasets: [{ data: info.values, backgroundColor: DATA.configs.map(configColor), borderRadius: 3 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { ticks: { display: false }, grid: { display: false } },
+          y: { min: 0, max: 0.25, ticks: { color: inkSecondary(), font: { size: 9 } }, grid: { color: gridColor() } },
+        },
+      },
+    });
+    charts.push(c);
+  });
+}
+
+function renderSpearman() {
+  const rows = DATA.configs.map(c => `<tr><td>${label(c)}</td><td>${DATA.generation[c].spearman_r}</td></tr>`).join('');
+  document.getElementById('spearmanTable').innerHTML = rows;
+}
+
+function renderAll() {
+  destroyAll();
+  renderRetrieval();
+  renderRouge();
+  renderFidelity();
+  renderCategories();
+  renderSpearman();
+}
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  renderAll();
+});
+
+renderAll();
+</script>
+</body>
+</html>
