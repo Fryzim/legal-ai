@@ -20,7 +20,7 @@ La combinaison fine-tuning + RAG obtient le meilleur ROUGE-L (0.179 contre 0.110
 
 ## Reporting
 
-- **Live dashboard :** [fryzim.github.io/legal-ai](https://fryzim.github.io/legal-ai/) — Recall@k par méthode de retrieval, ROUGE-L par configuration (avec IC 95%), écart par catégorie juridique, corrélation difficulté/qualité (source dans `docs/index.html`, chiffres repris de `RESULTS.md`).
+- **Dashboard web interactif :** [fryzim.github.io/legal-ai](https://fryzim.github.io/legal-ai/) — page HTML/Chart.js (pas un rapport Power BI) : Recall@k par méthode de retrieval, ROUGE-L par configuration (avec IC 95%), écart par catégorie juridique, corrélation difficulté/qualité. Source dans `docs/index.html`, chiffres repris de `RESULTS.md`.
 - **Power Query :** `reporting/power_query.m` — charge `results/difficulty_table.csv` (une ligne par question de test) pour Power BI/Excel.
 
 ## Contenu du dépôt
